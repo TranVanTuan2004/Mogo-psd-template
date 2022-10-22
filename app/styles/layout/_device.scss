@@ -1,0 +1,19 @@
+.device {
+    padding-top: 11rem;
+    background: linear-gradient(rgba($white-color, 0.7)),url("../images/img-device-bg.png") no-repeat center / cover;
+    &-media {
+        text-align: center;
+    }
+    &-img {
+        // margin và cho inline-block thì cái hình ảnh nó tự thu lại
+        margin: 0 auto -9.3rem;
+        display: inline-block;
+    }
+    @include maxWidth(767px) {
+        padding-top: 5rem;
+        &-img {
+            width: 70%;
+            margin-bottom: -4rem;
+        }
+    }
+}

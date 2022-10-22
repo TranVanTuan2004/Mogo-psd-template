@@ -1,0 +1,39 @@
+.work {
+    padding: 10rem 0;
+    & > .block-box {
+        padding: 0 1.5rem;
+    }
+    &-list {
+        min-height: 60rem;
+        margin-top: 4rem;
+    }
+    &-item {
+        height: 50%;
+    }
+    &-item-full {
+        height: 100%;
+    }
+    &-img {
+        display: block;
+        @include size(100%);
+        object-fit: cover;
+    }
+    &-content {
+        @include flexbox(center, center, column);
+        &-title {
+            margin: 1rem 0;
+            font-weight: 400;
+            color: $white-color;
+            text-transform: uppercase;
+        }
+        &-desc {
+            font-size: 1.5rem;
+            font-family: $secondary-font;
+            font-style: italic;
+            color: $white-color;
+        }
+    }
+}
+
+@include hoverEffect(".work-item", ".work-content", "false");
+

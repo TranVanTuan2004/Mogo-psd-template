@@ -1,0 +1,109 @@
+.quote {
+    padding: 6.5rem 0;
+    background-color: $gray-color;
+    &-container {
+        @include flexbox(center, space-between);
+    }
+    &-arrow-left,
+    &-arrow-right {
+        color: $text-color;
+        font-size: 3rem;
+        font-weight: 400;
+    }
+    &-item {
+        padding-left: 7.5rem;
+        padding-right: 7.5rem;
+        @include flexbox(center, center);
+        flex: 1;
+    }
+    &-icon {
+        @include size(15rem);
+        @include flexbox(center, center);
+        border: 3px solid $third-color;
+        flex-shrink: 0;
+    }
+    &-info {
+        padding-left: 6rem;
+
+    }
+    &-desc {
+        margin-bottom: 2.5rem;
+    }
+    &-desc p {
+        font-size: 2.4rem;
+        font-weight: 300;
+        line-height: 1.4;
+        font-family: $secondary-font;
+        color: $text-color;
+        overflow: hidden;
+        font-style: italic;
+        @include textLine(3);
+
+    }
+    &-author {
+        font-size: 2.4rem;
+        font-weight: 400;
+        font-style: italic;
+        font-family: $third-font;
+        color: $title-color;
+        position: relative;
+        padding-left: 7rem;
+        &::before {
+            content: "";
+            @include size(6rem, 4px);
+            background-color: $primary-color;
+            position: absolute;
+            left: 0;
+            top: 50%;
+        }
+    }
+
+    .slick-initialized .slick-slide {
+        display: flex;
+    }
+    .slick-arrow {
+        background-color: white;
+        border: none;
+        color: $text-color;
+        font-size: 3rem;
+        font-weight: 400;
+        @include absoluteCenter(top);
+        z-index: 10;
+    }
+    .slick-prev {
+        left: 0;
+    }
+    .slick-next {
+        right: 0;
+    }
+
+    @include maxWidth(767px) {
+        &{
+            margin: 4rem 0;
+            padding: 3rem 0;
+        }
+        &-arrow-left, 
+        &-arrow-right {
+            display: none;
+        }
+        &-item {
+            padding: 0;
+            flex-direction: column;
+        }
+        &-icon {
+            @include size(10rem);
+            &-img {
+                max-width: 40%;
+            }
+        }
+        &-info {
+            padding-left: 0;
+            flex: 1;
+        }
+        &-desc {
+            display: block;
+            font-size: 1.3rem;
+            padding-top: 2rem;
+        }
+    }
+}

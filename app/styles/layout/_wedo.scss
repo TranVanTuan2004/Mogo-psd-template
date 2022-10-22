@@ -1,0 +1,94 @@
+.wedo {
+    padding: 11rem 0;
+    &-container {
+        padding-top: 5rem;
+        @include flexbox(stretch, space-between);
+    }
+    &-img {
+        object-fit: cover;
+    }
+    &-item {
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+        &-header {
+            padding: 1.5rem;
+            @include flexbox(center);
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        &-title {
+            font-weight: 400;
+            color: $title-color;
+            margin-left: 1rem;
+            text-transform: uppercase;
+        }
+        &-icon {
+            margin-left: auto;
+            font-size: 2rem;
+            color: #ccc;
+        }
+        &-content {         
+            color: $text-color;
+            font-size: 1.5rem;
+            font-weight: $secondary-font;
+            padding: 2rem 1.5rem 3rem;
+            border: 1px solid #ccc;
+            line-height: 1.6;
+            font-style: italic;
+            border-top: 0;
+            display: none;
+        }
+        &.is-active .wedo-item-content {
+            display: block;
+        }
+        &-desc {
+            height: 13rem;
+            overflow-y: auto;
+            padding-right: 2rem;
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+            
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: $third-color;
+                border-radius: 2rem;
+              }
+              
+              /* Handle on hover */
+             &::-webkit-scrollbar-thumb:hover {
+                background: $third-color;
+              }
+        }
+    }
+    @include minWidth(768px) {
+        &{
+                &-content,
+                &-img {
+                    width: calc(50% - 1.5rem);
+                }    
+        }
+    }
+    @include maxWidth(767px) {
+        &{
+            padding: 7rem 0;
+            &-container {
+                padding-top: 0;
+            }
+        }
+        &-container {
+            display: block;
+        }
+        &-img {
+            min-width: 100%;
+        }
+        &-content {
+            padding-top: 4rem;
+        }
+    }
+}

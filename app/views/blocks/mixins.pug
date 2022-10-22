@@ -1,0 +1,84 @@
+mixin menuLink(title, href = "#")
+	li.header-menu-item 
+		a.header-menu-link(href= href)= title
+
+
+
+mixin headerBottomItem(number, title)
+	.header-bottom-item
+		span.header-bottom-number= number
+		span.header-bottom-text= title
+
+
+mixin blockBox(caption, title, desc)
+	.block-box
+		h3.block-box-caption= caption
+		h2.block-box-title= title
+		if desc
+			p.block-box-desc= desc
+
+
+
+
+
+mixin aboutItem(src, title, iconClass, alt = "") 
+	.about-item 
+		img.about-image(src= src, alt= alt)
+		.about-content
+			i.about-icon(class= iconClass)
+			span.about-title= title
+
+
+mixin servicesItem(src, title, desc, alt) 
+	.services-item
+		img.services-img(src= src, alt= alt)
+		.services-content 
+			h3.services-title= title
+			p.services-desc= desc
+
+
+mixin teamSocical(facebook= "#", instagram= "#", youtube= "#", twitter= "#")
+	ul.team-socical 
+		li.team-socical-item 
+			a.team-socical-link(href= facebook)
+				i.team-socical-icon.fab.fa-facebook-f
+		li.team-socical-item 
+			a.team-socical-link(href= instagram)
+				i.team-socical-icon.fab.fa-instagram
+		li.team-socical-item 
+			a.team-socical-link(href= youtube)
+				i.team-socical-icon.fab.fa-youtube
+		li.team-socical-item 
+			a.team-socical-link(href= twitter)
+				i.team-socical-icon.fab.fa-twitter
+
+
+mixin teamItem(src, name, position) 
+	.team-item
+		.team-main
+			img.team-img(src= src)
+			.team-content
+				if block 
+					block
+		.team-info
+			.team-name= name
+			.team-position= position
+
+
+
+mixin workItem(src= "../images/img-work1.png", icon= "../images/img-work-icon.png", title= "Trần Văn Tuấn", full= "", desc= "Đang có gắng trong ngành IT")
+	.work-item(class= full)
+		img.work-img(src= src)
+		.work-content
+			img.work-content-img(src= icon)
+			h3.work-content-title= title
+			p.work-content-desc= desc
+
+mixin peopleItem(src= "../images/img-people1.png", name= "Trần Văn Tuấn", job= "Font-end Developer", desc= " ipsum dolor sit amet consectetur adipisicing elit. Deserunt debitis blanditiis id laudantium odit quaerat esse similique, illum aliquam iusto! Quidem id illo qui nihil similique ipsam numquam modi sint?") 
+	li.people-item
+		img.people-img(src= src)
+		.people-info 
+			h3.people-info-name= name
+			span.people-info-job= job
+			p.people-info-desc= desc
+			

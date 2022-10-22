@@ -1,0 +1,211 @@
+.header {
+    min-height: 100rem;
+    // if use background thì cái nào đè lên trước thì phải code trước
+    background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8)),
+    url("../images/img-header-bg.jpg") no-repeat center / cover;
+    color: $white-color;
+    &-top {
+        @include flexbox(baseline, space-between);
+        padding-top: 3rem;
+    }
+    &-logo {
+        color: $white-color;
+        font-weight: bold;
+        font-size: 3rem;
+    }
+    &-toggle {
+        font-size: 2rem;
+        display: none;
+    }
+    &-menu {
+        &-item {
+            display: inline-block;
+            font-weight: 400;
+        }
+        &-link {
+            display: inline-block;
+            color: $white-color;
+            text-transform: uppercase;
+            padding-bottom: 1rem;
+            border-bottom: 4px solid transparent;
+            transition: all 0.1s linear;
+            &:hover {
+                color: $secondary-color;
+                border-bottom-color: $secondary-color;
+            }
+        }
+        &-icon {
+            color: $white-color;
+        }
+    }
+    &-content {
+        padding-top: 17rem;
+        // dùng text-align: center đẻ chữ nó ra giữa vì không trong pjamj vi của block nào hết
+        text-align: center;
+        max-width: 1000px;
+        // đóng gói trong một block nếu muốn ra giữa hết thì phải dùng margin trái phải auto
+        margin: 0 auto;
+        &-caption {
+            font-size: 7.2rem;
+            font-weight: 400;
+            font-family: $third-font;
+            padding-bottom: 4rem;
+        }
+        &-main {
+            font-size: 15rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            margin-bottom: 5rem;
+            padding-bottom: 5rem;
+            // nên xét padding bottom để chỉnh mấy cái positon = 0 cho dễ
+            &::after {
+                content: "";
+                position: absolute;
+                @include absoluteCenter("left");
+                bottom: 0;
+                width: 6rem;
+                height: 0.5rem;
+                background-color: $white-color;
+            }
+        }
+        &-more {
+            color: $white-color;
+            font-weight: bold;
+            transform: uppercase;
+            display: inline-block;
+            padding: 1rem 3rem;
+            border: 4px solid $white-color;
+            margin-bottom: 15rem;
+        }
+    }
+
+    &-bottom {
+        @include flexbox();
+        flex-wrap: wrap;
+        &-item {
+            padding-top: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            width: calc(25% - 30px);
+            margin-left: 30px;
+            @include flexbox(center);
+            opacity: 0.6;
+            border-top: 5px solid $white-color;
+            cursor: pointer;
+            transition: all 0.2s linear;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: translateY(-100%);
+                @include size(7rem, 0.5rem);
+                background-color: $primary-color;
+                transition: all 0.2s linear;
+                opacity: 0;
+            }
+        }
+        &-item:hover,
+        &-item.is-active {
+            opacity: 1;
+            &::before {
+                opacity: 1;
+            }
+        }
+        &-number {
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 2.4rem;
+        }
+        &-text {
+            font-weight: 400;
+            font-size: 1.8rem;
+        }
+    }
+    @media screen and (min-width: 768px) {
+        .header-menu-item:not(:first-child) {
+            margin-left: 4rem;
+        }
+    }
+    @media screen and (max-width: 1023px) {
+            min-height: unset;
+            &-content {
+                padding-top: 10rem;
+                &-caption {
+                    font-size: 6.2rem;
+                }
+                &-main {
+                    font-size: 10rem;
+                }
+            }
+    }
+    @media screen and (max-width: 767px) {
+        .header-bottom-text {
+            display: none;
+        }
+        .header-menu-icon {
+            color: $text-color;
+            padding: 2rem;
+            display: block;
+            &:hover {
+                color: $white-color;
+                background-color: $primary-color;
+            }
+        }
+        .header-content {
+            padding-top: 5rem;
+        }
+        .header-content-caption {
+            font-size: 3rem;
+        }
+        .header-content-main {
+            font-size: 5rem;
+        }
+        .header-content-more {
+            margin-bottom: 6rem;
+        }
+        .header-bottom-item {
+            padding-top: 1rem;
+        }
+        .header-bottom-item::before {
+            width: 35%;
+        }
+        .header-bottom-number {
+            margin: 0 auto;
+        }
+
+
+        .header-menu {
+            position: fixed;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 300px;
+            background-color: $white-color;
+            z-index: 1;
+            transform: translateX(100%);
+            transition: transform 0.25s ease-in;
+        }
+        .header-menu-item {
+            display: block;
+        } 
+        .header-menu-link {
+            color: $black-color;
+            width: 100%;
+            padding: 2rem;
+            &:hover {
+                color: $white-color;
+                background-color: $secondary-color;
+            }
+        }
+        .header-toggle {
+            display: inline-block;
+        }
+        .header-menu.is-active {
+            transform: translateY(0);
+        }
+    }
+
+}

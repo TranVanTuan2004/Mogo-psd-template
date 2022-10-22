@@ -1,0 +1,50 @@
+.number {
+    @include bg($third-color);
+    &-list {
+        @include flexbox();
+
+    }
+    &-item {
+        padding: 9rem 2.5rem;
+        width: 25%;
+        border-left: 1px solid $white-color;
+        text-align: center;
+        @include flexbox(center, center, column);
+        &:last-child {
+            border-right: 1px solid $white-color;
+        }
+        &-count {
+            font-weight: bold;
+            font-size: 7.2rem;
+            color: $white-color;
+            margin-bottom: 1.5rem;
+        }
+        &-text {
+            color: white;
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+    }
+
+    @include maxWidth(1023px) {
+        .number {
+            &-item {
+                padding: 7rem 2.5rem;
+            }
+        }
+    }
+    @include maxWidth(767px) {
+        .number {
+            &-item {
+                padding: 4rem 2rem;
+                &-count {
+                    font-size: 4rem;
+                }
+                &-text {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

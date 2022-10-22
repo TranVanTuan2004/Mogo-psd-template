@@ -1,0 +1,62 @@
+.people {
+    padding: 10rem 0;
+    background: linear-gradient(to bottom, rgba($white-color, 0.8), rgba($white-color, 0.8)), url("../images/img-people-bg.png") no-repeat center / cover;
+    min-height: 83rem;
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 8rem;
+        margin-top: 9rem;
+    }
+    &-item {
+        @include flexbox();
+    }
+    &-img {
+        @include size(11rem);
+        object-fit: cover;
+    }
+    &-info {
+        padding-left: 3rem;
+        &-name {
+            color: $title-color;
+            text-transform: uppercase;
+        }
+        &-job {
+            display: inline-block;
+            color: $text-color; 
+            padding: 1.6rem 0 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            font-style: italic;
+            &::after {
+                content: "";
+                position: absolute;
+                @include size(6rem, 4px);
+                background-color: $primary-color;
+                left: 0;
+                bottom: 0;
+            }
+        }
+        &-desc {
+            color: $text-color;
+            font-family: $secondary-font;
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+    }
+    @include maxWidth(1023px) {
+        padding: 6rem 0;
+        &-list {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+    }
+    @include maxWidth(767px) {
+        &-list {
+            margin-top: 6rem;
+        }
+        &-img {
+            @include size(7rem);
+        }
+    }
+}

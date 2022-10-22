@@ -1,0 +1,144 @@
+.block {
+    padding: 11rem 0;
+    &-list {
+        @include flexbox(stretch, space-between, row, wrap);
+    }
+    &-item {
+        width: calc(33.3333% - 2rem); 
+    }
+    &-img {
+        @include size(100%, 24rem);
+        object-fit: cover;
+    }
+    &-media {
+        position: relative;
+    }
+    &-date {
+        @include size(6rem, 7rem);
+        background-color: $third-color;
+        @include flexbox(center, center, column);
+        color: $white-color;
+        position: absolute;
+        bottom: 12px;
+        left: -4%;
+        &-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        &-text {
+            font-weight: 300;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-top: 6px;
+            font-family: $secondary-font;
+        }
+    }
+    &-heading {
+        color: $title-color;
+        font-weight: bold;
+        padding: 1.5rem 0;
+        text-transform: uppercase;
+        line-height: 1.4;
+    }
+    &-desc {
+        font-size: 1.5rem;
+        font-weight: $secondary-font;
+        font-style: italic;
+        color: $text-color;
+        line-height: 2;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #ccc;
+    }
+    &-meta {
+        margin-top: 1.5rem;
+        @include flexbox(center);
+        &-item {
+            margin-right: 2rem;
+        }
+        &-icon {
+            color: $third-color;
+            margin-right: 0.5rem;
+        }
+        &-text {
+            font-size: 1.5rem;
+            font-family: $secondary-font;
+            font-style: italic;
+            color: $gray-dark-color;
+        }
+    }
+    @include maxWidth(1023px) {
+        padding: 6rem 0;
+        &-img {
+            height: 14rem;
+        }
+        &-heading {
+            font-size: 1.2rem;
+        }
+        &-desc {
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+
+        &-inner {
+            // nếu mà nó bị ảnh hưởng cái dòng line do padding ấy thì bọc lại trong một thẻ con để sét cho nó số dòng để cái thằng con đó không ảnh hưởng tới thằng padding
+            @include textLine(2);
+        }
+    }
+    @include maxWidth(767px) {
+        &-list {
+            display: block;
+        }
+        &-item {
+            width: 100%;
+            &:not(:first-child) {
+                margin-top: 6rem;
+            }
+        }
+        &-date {
+            bottom: 5px;
+            left: -2%;
+        }
+        &-img {
+            height: auto;
+        }
+    }
+}
+
+
+
+.map {
+    background: linear-gradient((to bottom, rgba(white, 0.7), rgba(white, 0.7))), url("../images/img-map.png") no-repeat center / cover;
+    height: 20rem;
+    @include flexbox(center, center);
+    &-content {
+        @include flexbox(center, center, column);
+    }
+    &-icon {
+        margin-bottom: 1rem;
+    }
+    &-text {
+        font-size: 2.4rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: $primary-color;
+        position: relative;
+        padding-bottom: 2rem;
+        &::after {
+            content: "";
+            position: absolute;
+            @include size(50%, 4px);
+            background-color: $primary-color;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+    }
+    
+
+    @include maxWidth(767px) {
+        height: 15rem;
+        &-text {
+            font-size: 2rem;
+        }
+    }
+}

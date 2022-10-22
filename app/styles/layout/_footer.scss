@@ -1,0 +1,146 @@
+.footer {
+    padding: 7.5rem 0 7rem;
+    background-color: $gray-color;
+    &-desc {
+        padding: 4rem 0;
+        font-size: 1.5rem;
+        line-height: 1.6;
+        font-family: $secondary-font;
+        font-weight: 400;
+        color: $text-color;
+    }
+    &-followers {
+        font-weight: 400;
+        strong {
+            font-weight: bold;
+        }
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid $gray-dark-color;
+    }
+    &-socical {
+        display: flex;
+        &-heading {
+            font-weight: $secondary-font;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: $text-color;
+            margin-right: 1rem;
+        }
+        &-link {
+            margin-left: 1rem;
+        }
+        &-icon {
+            color: $third-color;
+        }
+    } 
+    &-form {
+        margin-top: 4rem;
+        width: 100%;
+        @include flexbox(center, flex-start);
+        &-input {
+            @include size(23rem, 3.6rem);
+            outline: none;
+            border: 1px solid #ccc;
+            border-right: transparent;
+            padding: 1.2rem;
+        }
+        &-btn {
+            text-transform: uppercase;
+            font-weight: bold;
+            background-color: $third-color;
+            color: $white-color;
+            border: none;
+            @include size(15rem, 3.6rem);
+        }
+    }
+
+    &-heading {
+        color: $title-color;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+    &-blog {
+        padding-top: 4rem;
+        &:nth-child(3) {
+            padding-top: 3rem
+        }
+        &:nth-child(4) {
+            padding-top: 3rem
+        }
+        @include flexbox(center);
+        &-img {
+            @include size(12rem, 8rem);
+            object-fit: cover;
+        }
+        &-content {
+            padding-left: 2rem;
+        }
+        &-title {
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            color: $title-color;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+        &-time {
+            display: inline-block;
+            padding-top: 1rem;
+            color: $text-color;
+            font-size: 1.3rem;
+            font-family: $secondary-font;
+            font-style: italic;
+        }
+    }
+    &-images {
+        padding-top: 4rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(90px, 1fr);
+        grid-gap: 4px;
+    }
+    &-image img{
+        object-fit: cover;
+        @include size(100%);
+    }
+    &-text {
+        margin-top: 2rem;
+        font-size: 1.3rem;
+        font-style: italic;
+        font-weight: $secondary-font;
+        color: $text-color;
+    }
+
+    @include maxWidth(1023px) {
+        padding: 0 0 7rem;
+        &-item {
+            @include flexbox(center, center, column);
+            text-align: center;
+            padding-top: 8rem;
+        }
+        &-images {
+            @include size(80%);
+            display: grid;
+            grid-gap: 1rem;
+        }
+        &-form {
+            @include flexbox(center, center)
+        }
+    }
+}
+
+
+
+
+.author {
+    background-color: $gray-color;
+    height: 6rem;
+    @include flexbox(center, center);
+    border-top: 1px solid $gray-dark-color;
+    &-text {
+        font-weight: 600;
+        & span {
+            color: $primary-color;
+        }
+    }
+}

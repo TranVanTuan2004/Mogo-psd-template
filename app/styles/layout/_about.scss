@@ -1,0 +1,90 @@
+.about {
+	padding: 9rem 0;
+	&-list {
+		margin-top: 5rem;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 3rem;
+	}
+	&-image {
+		min-height: 25rem;
+		max-height: 25rem;
+		width: 100%;
+		object-fit: cover;
+	}
+		@include hoverEffect(".about-item", ".about-content");
+	&-content {
+		@include flexbox(center , center, column)
+	}
+	&-icon {
+		color: $white-color;
+		font-size: 2rem;
+		margin-bottom: 1rem;
+	}
+	&-title {
+		color: $white-color;
+		font-size: 1.8rem;
+		font-weight: bold;
+	}
+	@include maxWidth(767px) {
+		&{
+			padding: 6rem 0;
+			&-list {
+				display: grid;
+				grid-column-gap: 2.5rem;
+				grid-template-columns: unset;
+				grid-auto-columns: 70%;
+				grid-auto-flow: column;
+				overflow-x: auto;
+				scroll-snap-type: x mandatory;
+				scroll-snap-align: always;
+				padding-bottom: 6rem;
+				@include hideScroll;
+			}
+			&-item {
+				scroll-snap-align: center;
+			}
+		}
+	}
+
+	@media screen and (min-width: 768px) and (max-width: 1023px) {
+		.about {
+			&-list {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+	}
+
+	
+}
+
+
+.light-box {
+	display: none;
+	&-overlay {
+		@include fixedFull;
+		background-color: rgba($black-color, 0.6);
+		z-index: 10;
+		@include flexbox(center, center);
+	}
+	&-img {
+		@include size(70%);
+		object-fit: cover;
+	}
+	&-prev {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 4rem;
+		font-size: 3rem;
+		color: $white-color;
+	}
+	&-next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 4rem;
+		font-size: 3rem;
+		color: $white-color;
+	}
+}

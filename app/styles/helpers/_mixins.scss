@@ -1,0 +1,143 @@
+@mixin flexbox(
+	$align: stretch,
+	$justify: flex-start,
+	$direction: row,
+	$wrap: nowrap,
+){
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+}
+
+@mixin size($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+
+@mixin absoluteCenter($direction: "left") {
+	position: absolute;
+	@if($direction == "left") {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	@if($direction == "top") {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	@if($direction == "both") {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@mixin absoluteFull() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+@mixin bg($bgColor) {
+	background-color: $bgColor;
+}
+
+@mixin maxWidth($breakpoint) {
+	@media screen and (max-width: $breakpoint) {
+		@content;
+	}
+}
+
+@mixin minWidth($breakpoint) {
+	@media screen and (min-width: $breakpoint) {
+		@content;
+	}
+}
+
+@mixin hideScroll() {
+	-ms-overflow-style: none; /* cho  Internet Explorer, Edge */
+	scrollbar-width: none; /* cho Firefox */
+	overflow-y: scroll; 
+	&::-webkit-scrollbar {
+		display: none; /* cho Chrome, Safari, and Opera */
+	  }
+	  
+}
+
+@mixin textLine($row) {
+	display: block;
+	display: -webkit-box;
+	-webkit-line-clamp: $row;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@mixin fixedFull() {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+
+@mixin hoverEffect($itemClass, $contentClass, $transform: "true") {
+	#{$itemClass} {
+		position: relative;
+		z-index: 1;
+		transition: all 0.25s linear;
+		@if $transform == "true" {
+			&::before {
+				content: "";
+				@include absoluteFull();
+				@include bg($third-color);
+				z-index: -1;
+				transition: all 0.25s linear;
+		
+			}
+		}
+
+		&:hover {
+			#{$contentClass} {
+				opacity: 1;
+				visibility: visible;
+			}
+			@if $transform == "true" {
+				transform: translate(-1rem, -1rem);
+				&::before {
+					transform: translate(1rem, 1rem);
+				}
+			}
+		}
+		#{$contentClass} {	
+			@include absoluteFull();
+			background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8));
+			z-index: 10;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.25s linear;
+		}
+	}
+}
+
+
+@mixin touchItem($width, $column: 2.5rem, $padding: 1rem) {
+			display: grid;
+			grid-column-gap: $column;
+			grid-template-columns: unset;
+			grid-auto-columns: $width;
+			grid-auto-flow: column;
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			@include hideScroll;
+		& > * {
+			scroll-snap-align: center;
+			width: auto;
+		}
+			
+}
